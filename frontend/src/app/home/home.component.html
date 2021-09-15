@@ -1,0 +1,22 @@
+<form (submit)="save(f)" #f="ngForm"><input type="text" name="search" ngModel />
+    <button type="submit">Show</button>
+</form>
+<div>
+    <div class="loader" *ngIf="data.isLoading">
+        <app-loader></app-loader>
+    </div>
+    <table *ngIf="!data.isLoading">
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Problem</th>
+        </tr>
+
+        <tr *ngFor="let item of data.contest">
+            <td style="text-align:center"><a href="www.codeforces.com/contest/{{item.id}}">{{item.name}}</a></td>
+            <td>{{item.id}}</td>
+            <td>{{item.solved}}</td>
+        </tr>
+
+    </table>
+</div>
